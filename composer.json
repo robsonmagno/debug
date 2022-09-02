@@ -1,0 +1,85 @@
+{
+    "name": "rmagnoprado/debug",
+    "description": "Package de debug PHP",
+    "type": "library",
+    "require": {
+        "php": ">=7.4",
+        "components/jquery": ">=1.9.1",
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-json": "*",
+        "ext-sqlite3": "*",
+        "ext-mbstring": "*",
+        "phpunit/phpunit": "*",
+        "phpstan/phpstan": "*",
+        "friendsofphp/php-cs-fixer":"*",
+        "nunomaduro/phpinsights": "*",
+        "vakata/jstree": ">=3.3.12"
+    },
+    "require-dev": {
+        "php": ">=7.4",
+        "components/jquery": ">=1.9.1",
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-json": "*",
+        "ext-sqlite3": "*",
+        "ext-mbstring": "*",
+        "phpunit/phpunit": "*",
+        "phpstan/phpstan": "*",
+        "friendsofphp/php-cs-fixer":"*",
+        "nunomaduro/phpinsights": "*",
+        "vakata/jstree": ">=3.3.12"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Rmagnoprado\\Debug\\": "app/"
+        }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Rmagnoprado\\Debug\\Tests\\": "tests/"
+      }
+    },
+    "scripts": {
+        "phpunit": "vendor/bin/phpunit tests",
+        "phpstan": "vendor/bin/phpstan analyse app tests",
+        "phpinsights": "vendor/bin/phpinsights analyse app --format=json > log/phpinsights.json -v --fix"
+        
+    },
+    "authors": [
+        {
+            "name": "Robson Magno",
+            "email": "rmagnoprado@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "config": {
+        "archive-dir": ".",
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+		"component": {
+			"scripts": [
+				"dist/jstree.js"
+			],
+			"styles": [
+				"dist/themes/default/style.css"
+			],
+			"images": [
+				"dist/themes/default/32px.png",
+				"dist/themes/default/40px.png",
+				"dist/themes/default/throbber.gif"
+			],
+			"files": [
+				"dist/jstree.min.js",
+				"dist/themes/default/style.min.css",
+				"dist/themes/default/32px.png",
+				"dist/themes/default/40px.png",
+				"dist/themes/default/throbber.gif"
+			]
+		}
+	}
+}

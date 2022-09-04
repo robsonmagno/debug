@@ -4,19 +4,33 @@ namespace Rmagnoprado\Debug;
 
 require 'vendor/autoload.php';
 
-use Composer\Script\Event;
-
 class Main {
     public function __construct() {
-        include(__DIR__."../../includes/Header.php");
+        
     }
 
     /**
-     * Metodo responsável por mostrar o json do tree view
+     * Metodo responsável por mostrar os includes do html header
+     * @return string $retorno
+    */
+    public function getHeader():string {
+        return (string)file_get_contents(__DIR__."../../includes/Header.php");
+    }
+    
+    /**
+     * Metodo responsável por mostrar o corpo html
+     * @return string $retorno
+    */
+    public function getBody():string {
+        return (string)file_get_contents(__DIR__."../../includes/Body.php");
+    }
+    
+    /**
+     * Metodo responsável por mostrar o json e o tree view
      * @param string $data
      * @return string $retorno
     */
-    public function show(string $data):string{
+    public function getScript(string $data):string{
         $info = $this->montaTree($data);
         $retorno = "[{'text':'info', 'children': $info }]";
 
@@ -110,6 +124,6 @@ class Main {
     }
     */
     public function __destruct() {
-        include(__DIR__."../../includes/Footer.php");
+        //include(__DIR__."../../includes/Footer.php");
     }
 }

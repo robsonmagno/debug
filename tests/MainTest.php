@@ -29,7 +29,25 @@ class MainTest extends TestCase {
         $debug = new Main();
 
         $this->assertIsString(
-            $debug->show($json)
+            $debug->getScript($json)
+        );
+    }
+
+    public function test_getHeader() : void{
+
+        $debug = new Main();
+
+        $this->assertIsString(
+            $debug->getHeader()
+        );
+    }
+
+    public function test_getBody() : void{
+
+        $debug = new Main();
+
+        $this->assertIsString(
+            $debug->getBody()
         );
     }
 }

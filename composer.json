@@ -44,8 +44,8 @@
     "scripts": {
         "phpunit": "vendor/bin/phpunit tests",
         "phpstan": "vendor/bin/phpstan analyse app tests",
-        "phpinsights": "vendor/bin/phpinsights analyse app --format=json > log/phpinsights.json -v --fix"
-        
+        "phpinsights": "./vendor/bin/phpinsights --format=json > log/phpinsights.json -v --fix",
+        "phpcs": "./vendor/bin/phpcs --standard=PSR2 app tests"
     },
     "authors": [
         {

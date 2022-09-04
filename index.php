@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Rmagnoprado\Debug;
 
-ob_start();
 require 'vendor/autoload.php';
 
 $request = '{
@@ -19,6 +18,17 @@ $header = [
 ];
 $json = (string) json_encode(['header' => $header,'body' => json_decode($request)]);
 $debug = new Main();
-$debug->getHeader($json);
-$debug->getBody($json);
-$debug->getScript($json);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Qr Code</title>
+    <?php echo $debug->getHeader(); ?>
+</head>
+<body>
+<h1>Teste Debug Client</h1>
+<?php echo $debug->getBody(); ?>
+<script>
+<?php $debug->getScript($json); ?>
+</script></body></html>

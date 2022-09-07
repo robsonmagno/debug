@@ -89,6 +89,10 @@ class Main {
         return "[$retorno]";
     }
 
+    public function getThree():string{
+        return '<script src="vendor/vakata/jstree/dist/jstree.min.js"></script>';
+    }   
+    
     /* *
      * Metodo responsável por copiar a estrutura após instalação
      * @param Event $event

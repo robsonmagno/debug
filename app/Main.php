@@ -41,7 +41,7 @@ class Main {
 
         echo "$('#$rnd').jstree({
             'core' : {
-                'data': [{'text':'Info', 'children': $info }]
+                'data': [{'text':'Info', 'state' : { 'opened' : true },'children': $info }]
             }
         });\n";
         return $retorno;
@@ -54,38 +54,17 @@ class Main {
     */
     private function montaTree(string $json):string{
         $retorno = "";
-        foreach(json_decode($json) as $key=>$value) {
-            if(is_int($key)==1 && strlen($value)>1) {
-                $arr = json_decode($value);
-                if(!is_object($arr)){
-                    $retorno .= '{"text":"'.trim($value).'","icon" : "jstree-file"},';   
-                }else{
-                    $arr = (array)$arr;
-                    if(count($arr)>0){
-                        $retorno .= '{"text":"'.$key.'","children":';
-                        $vl = (string)json_encode($arr);
-                        $retorno .= $this->montaTree($vl)."},";
-                    }
-                }
+        $matriz = json_decode($json,1);
+        
+        foreach($matriz as $key=>$value) {
+            if(gettype($value)=='array'){
+                $retorno .= '{"text":"'.$key.'","state" : { "opened" : true },"children":';
+                $retorno .= $this->montaTree(json_encode($value))."},";
             }else{
-                if(is_object($value)){         
-                    $retorno .= '{"text":"'.$key.'","children":';
-                    $vl = (string)json_encode($value);
-                    $retorno .= $this->montaTree($vl)."},";                   
-                }else{
-                    if(is_array($value)){
-                        $retorno .= '{"text":"'.$key.'","children":';
-                        $vl = (string)json_encode($value);
-                        $retorno .= $this->montaTree($vl)."},";
-                    }else{
-                        if(strlen($value)>1) {
-                            $v = str_replace(chr(13),"",trim($value));
-                            $retorno .= '{"text":"'.$key.'","children":[{"text":"'.$v.'","icon" : "jstree-file"}]},';
-                        }
-                    }
-                }
+                $retorno .= '{"text":"'.trim($value).'","icon" : "jstree-file"},';   
             }
         }
+
         return "[$retorno]";
     }
 

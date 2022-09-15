@@ -3,7 +3,7 @@
     "description": "Package de debug PHP",
     "type": "library",
     "require": {
-        "php": ">=7.4",
+        "php": ">=5.6",
         "components/jquery": ">=1.9.1",
         "ext-curl": "*",
         "ext-dom": "*",
@@ -12,11 +12,12 @@
         "ext-mbstring": "*",
         "phpunit/phpunit": "*",
         "phpstan/phpstan": "*",
+        "friendsofphp/php-cs-fixer":"*",
         "nunomaduro/phpinsights": "*",
         "vakata/jstree": ">=3.3.12"
     },
     "require-dev": {
-        "php": ">=7.4",
+        "php": ">=5.6",
         "components/jquery": ">=1.9.1",
         "ext-curl": "*",
         "ext-dom": "*",
@@ -25,6 +26,7 @@
         "ext-mbstring": "*",
         "phpunit/phpunit": "*",
         "phpstan/phpstan": "*",
+        "friendsofphp/php-cs-fixer":"*",
         "nunomaduro/phpinsights": "*",
         "vakata/jstree": ">=3.3.12"
     },

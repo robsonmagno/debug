@@ -17,4 +17,4 @@ pre#json-renderer {
   border: 1px solid #aaa;
 }
 </style>
-<link rel="stylesheet" href="dist/jquery.json-viewer.css" />
+<link rel="stylesheet" href="vendor/rmagnoprado/debug/dist/jquery.json-viewer.css" />

@@ -82,7 +82,7 @@ class Main
 
         $options = "<p id=\"options{$rnd}\"><label>Opções:</label><br><label title=\"Generate node as collapsed\"> <input type=\"checkbox\" id=\"collapsed{$rnd}\"> Collapse nodes</label> <label title=\"Allow root element to be collasped\"> <input type=\"checkbox\" id=\"root-collapsable{$rnd}\" checked> Root collapsable</label> <label title=\"Surround keys with quotes\"> <input type=\"checkbox\" id=\"with-quotes{$rnd}\"> Keys with quotes</label> <label title=\"Generate anchor tags for URL values\"> <input type=\"checkbox\" id=\"with-links{$rnd}\" checked> With Links</label></p><pre id=\"json-renderer{$rnd}\"></pre>";
 
-        $script = "<script>
+        $script = "<script src='vendor/rmagnoprado/debug/dist/jquery.json-viewer.js'></script><script>
                         $('#data').append('<div id=\"{$rnd}\"class=\"data\">{$options}</div>');
                         $(function() {
                         function renderJson() {

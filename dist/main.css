@@ -1,0 +1,51 @@
+.fontTree
+{
+        font-family:Segoe UI, Tahoma, Sans-Serif;
+        font-size:10pt;
+        color:#1F3870;        	
+}
+
+.nolines_PlusTree
+{		
+        background: url(Imagens/nolines_plus.gif) no-repeat left;
+}
+
+.nolines_MinusTree
+{		
+        background: url(Imagens/nolines_minus.gif) no-repeat left;
+}        
+
+.joinTree
+{		
+        background: url(Imagens/join.gif) no-repeat left;
+}  
+
+.joinBottomTree
+{		
+        background: url(Imagens/joinbottom.gif) no-repeat left;
+}       
+                
+.plusBottomTree
+{		
+        background: url(Imagens/plusbottom.gif) no-repeat left;
+}   
+
+.plusTree
+{		
+        background: url(Imagens/plus.gif) no-repeat left;
+}     
+
+.minusTree
+{		
+        background: url(Imagens/minus.gif) no-repeat left;
+}  
+
+.minusBottomTree
+{		
+        background: url(Imagens/minusbottom.gif) no-repeat left;
+}       
+
+.lineTree
+{		
+        background: url(Imagens/line.gif) no-repeat left;
+}     

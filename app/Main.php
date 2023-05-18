@@ -80,11 +80,41 @@ class Main
     {
         $rnd = rand(0, 100);
 
-        $options = "<p id=\"options{$rnd}\"><label>Opções:</label><br><label title=\"Generate node as collapsed\"> <input type=\"checkbox\" id=\"collapsed{$rnd}\"> Collapse nodes</label> <label title=\"Allow root element to be collasped\"> <input type=\"checkbox\" id=\"root-collapsable{$rnd}\" checked> Root collapsable</label> <label title=\"Surround keys with quotes\"> <input type=\"checkbox\" id=\"with-quotes{$rnd}\"> Keys with quotes</label> <label title=\"Generate anchor tags for URL values\"> <input type=\"checkbox\" id=\"with-links{$rnd}\" checked> With Links</label></p><pre id=\"json-renderer{$rnd}\"></pre>";
+        $script = "<script>
+        objTreeView = new treeView();
+        var json = JSON.parse('$data');
+        var objRoot = objTreeView.addNodeRoot(0, 'Node Raiz', 'vendor/rmagnoprado/debug/dist/Imagens/globe.gif', true);
+
+        i = 0;
+
+        // This function handles arrays and objects
+        function eachRecursive(obj,node)
+        {            
+            Object.keys(obj).forEach(function(key) {
+              
+                if (typeof obj[key] === 'object') {
+                    newNode = node.addNode(i, key, 'vendor/rmagnoprado/debug/dist/Imagens/base.gif', false);
+                    i++;
+                    eachRecursive(obj[key],newNode);                    
+                }else{
+                    node.addNode(i, obj[key], 'vendor/rmagnoprado/debug/dist/Imagens/page.gif', false);                   
+                    i++;
+                }
+                
+            });
+        }
+        eachRecursive(json,objRoot);
+        document.getElementById('contentTreeViewDiv').innerHTML = objTreeView.contentHtml();    
+        </script>
+        ";
+        
+        echo $script;
+        /*
+        $options = "<p id=\"options{$rnd}\"><label>Opções:</label><br><label title=\"Generate node as collapsed\"> <input onclick=\"renderJson();\"  type=\"checkbox\" id=\"collapsed{$rnd}\"> Collapse nodes</label> <label title=\"Allow root element to be collasped\"> <input onclick=\"renderJson();\"  type=\"checkbox\" id=\"root-collapsable{$rnd}\" checked> Root collapsable</label> <label title=\"Surround keys with quotes\"> <input onclick=\"renderJson();\"  type=\"checkbox\" id=\"with-quotes{$rnd}\"> Keys with quotes</label> <label title=\"Generate anchor tags for URL values\"> <input onclick=\"renderJson();\"  type=\"checkbox\" id=\"with-links{$rnd}\" checked> With Links</label></p><pre id=\"json-renderer{$rnd}\"></pre>";
 
         $script = "<script src='vendor/rmagnoprado/debug/dist/jquery.json-viewer.js'></script><script>
-                        $('#data').append('<div id=\"{$rnd}\"class=\"data\">{$options}</div>');
-                        $(function() {
+                        document.getElementById('data').innerHTML = '<div id=\"{$rnd}\"class=\"data\">{$options}</div>';
+                        
                         function renderJson() {
                             try {
                             var input = {$data};
@@ -93,26 +123,29 @@ class Main
                             return alert(\"Cannot eval JSON: \" + error);
                             }
                             var options = {
-                            collapsed: $('#collapsed{$rnd}').is(':checked'),
-                            rootCollapsable: $('#root-collapsable{$rnd}').is(':checked'),
-                            withQuotes: $('#with-quotes{$rnd}').is(':checked'),
-                            withLinks: $('#with-links{$rnd}').is(':checked')
+                            collapsed: document.getElementById('collapsed{$rnd}').value,
+                            rootCollapsable: document.getElementById('root-collapsable{$rnd}').value,
+                            withQuotes: document.getElementById('with-quotes{$rnd}').value,
+                            withLinks: document.getElementById('with-links{$rnd}').value
                             };
-                            $('#json-renderer{$rnd}').jsonViewer(input, options);
+                            //document.getElementById('json-renderer{$rnd}').jsonViewer(input, options);
                         }
                         
                         // Generate on click
                         //$('#btn-json-viewer').click(renderJson);
                         
                         // Generate on option change
-                        $('#options{$rnd} input[type=checkbox]').click(renderJson);
+                        //document.getElementsByTagName('input').addEventListener('click', renderJson);
+
+                        //$('#options{$rnd} input[type=checkbox]').click(renderJson);
                         
                         // Display JSON sample on page load
                         renderJson();
-                        });
+                       
                     </script>";
 
         echo $options.$script;
+        */
         return '';
     }
 }

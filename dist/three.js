@@ -1,3 +1,5 @@
+const { parseJSON } = require("jquery");
+
 //Classe TreeView
 function treeView() {
     this.nodeRoot = null;//Tipo itemNode.
